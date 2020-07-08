@@ -6,7 +6,7 @@ const Order = () => {
     const { loading, orders } = useContext(OrderContext);
     const { user } = useContext(UserContext);
 
-    console.log(orders);
+    // console.log(orders);
     // console.log(user);
 
     const userId = user.id;
@@ -20,6 +20,7 @@ const Order = () => {
                     <td>{item.created_at}</td>
                     <td>{item.name}</td>
                     <td>{item.total}</td>
+                    <td>{item.shipped.toString()}</td>
                 </tr>
             </tbody>
         );
@@ -37,9 +38,9 @@ const Order = () => {
                         <th>Date Order</th>
                         <th>Name</th>
                         <th>Total</th>
+                        <th>Status</th>
                     </tr>
                 </tbody>
-
                 {myOrder}
             </table>
         </div>

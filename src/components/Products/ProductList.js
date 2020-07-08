@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 
 export default function ProductList({ products, title }) {
-    // console.log(products);
+    console.log(products);
 
     return (
         <div className="container-fluid">

@@ -19,13 +19,15 @@ const OrderProvider = ({ children }) => {
         const response = await axios.get(`${URL}/orders`).then((res) => {
             setOrders(res.data);
             setLoading(false);
+
+            console.log(res.data);
         });
 
         return response;
     };
 
     return (
-        <OrderContext.Provider value={{ orders, loading }}>
+        <OrderContext.Provider value={{ orders, loading, getOrders }}>
             {children}
         </OrderContext.Provider>
     );

@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/cart';
 import { UserContext } from '../context/user';
-import { useHistory } from 'react-router-dom';
+import { OrderContext } from '../context/order';
+import { useHistory, Router } from 'react-router-dom';
 import EmptyCart from '../components/Cart/EmptyCart';
 import Visa from '../assets/visa.png';
 import {
@@ -19,6 +20,7 @@ function Checkout(props) {
 
     const { cart, total, clearCart } = useContext(CartContext);
     const { user, showAlert, hideAlert, alert } = useContext(UserContext);
+    const { getOrders } = useContext(OrderContext);
 
     const [name, setName] = useState('');
     const [error, setError] = useState('');
@@ -55,6 +57,7 @@ function Checkout(props) {
             if (order) {
                 showAlert({ msg: 'Your Order is complete' });
                 clearCart();
+                getOrders();
                 history.push('/order');
                 return;
             } else {

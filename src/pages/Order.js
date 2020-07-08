@@ -4,7 +4,7 @@ import { UserContext } from '../context/user';
 
 const Order = () => {
     const { orders } = useContext(OrderContext);
-    const { user } = useContext(UserContext);
+    // const { user } = useContext(UserContext);
 
     // console.log(orders);
     // console.log(user);

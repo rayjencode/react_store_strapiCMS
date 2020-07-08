@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import Loading from '../components/Loading';
 import { OrderContext } from '../context/order';
 // import { UserContext } from '../context/user';
 
 const Order = () => {
-    const { orders } = useContext(OrderContext);
+    const { loading, orders } = useContext(OrderContext);
     // const { user } = useContext(UserContext);
 
     // console.log(orders);
@@ -25,23 +26,27 @@ const Order = () => {
         );
     });
 
-    return (
-        <div className="container-fluid">
-            <h2 className="text-center text-uppercase fontRoboto mb-5">
-                My Order
-            </h2>
+    return loading ? (
+        <Loading />
+    ) : (
+        <>
+            <div className="container-fluid">
+                <h2 className="text-center text-uppercase fontRoboto mb-5">
+                    My Order
+                </h2>
 
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Date Order</th>
-                        <th>Name</th>
-                        <th>Total</th>
-                    </tr>
-                </tbody>
-                {myOrder}
-            </table>
-        </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Date Order</th>
+                            <th>Name</th>
+                            <th>Total</th>
+                        </tr>
+                    </tbody>
+                    {myOrder}
+                </table>
+            </div>
+        </>
     );
 };
 

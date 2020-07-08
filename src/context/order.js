@@ -16,6 +16,7 @@ const OrderProvider = ({ children }) => {
     }, [setLoading, setOrders]);
 
     const getOrders = async () => {
+        setLoading(true);
         const response = await axios.get(`${URL}/orders`).then((res) => {
             setOrders(res.data);
             setLoading(false);

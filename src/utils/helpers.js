@@ -1,5 +1,5 @@
 // helper functions
-import URL from './URL';
+// import URL from './URL';
 
 export const flattenProducts = (data) => {
     return data.map((item) => {

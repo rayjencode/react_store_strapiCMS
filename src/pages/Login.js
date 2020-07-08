@@ -72,7 +72,7 @@ export default function Login() {
         if (user.token) {
             history.push('/');
         }
-    }, []);
+    }, [history, user.token]);
 
     return (
         <section className="container-fluid mx-auto">

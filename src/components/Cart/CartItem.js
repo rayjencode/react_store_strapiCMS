@@ -3,7 +3,7 @@ import { FaAngleUp, FaAngleDown } from 'react-icons/fa';
 import { CartContext } from '../../context/cart';
 
 export default function CartItem({ id, title, image, price, amount }) {
-    const { cart, removeItem, increaseAmount, decreaseAmount } = useContext(
+    const { removeItem, increaseAmount, decreaseAmount } = useContext(
         CartContext
     );
 

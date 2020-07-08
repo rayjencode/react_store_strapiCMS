@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/cart';
 import { UserContext } from '../context/user';
 import { OrderContext } from '../context/order';
-import { useHistory, Router } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import EmptyCart from '../components/Cart/EmptyCart';
 import Visa from '../assets/visa.png';
 import {

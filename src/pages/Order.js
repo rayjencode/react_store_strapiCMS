@@ -3,13 +3,13 @@ import { OrderContext } from '../context/order';
 import { UserContext } from '../context/user';
 
 const Order = () => {
-    const { loading, orders } = useContext(OrderContext);
+    const { orders } = useContext(OrderContext);
     const { user } = useContext(UserContext);
 
     // console.log(orders);
     // console.log(user);
 
-    const userId = user.id;
+    // const userId = user.id;
 
     // const userOrders = orders.find((item) => item.user.id === parseInt(userId));
 

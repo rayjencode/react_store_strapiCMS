@@ -19,7 +19,7 @@ async function submitOrder({ name, total, items, stripeTokenId, userToken }) {
             }
         )
         .catch((error) => console.log(error));
-    console.log(response);
+
     return response;
 }
 

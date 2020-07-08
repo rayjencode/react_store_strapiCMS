@@ -19,8 +19,6 @@ const OrderProvider = ({ children }) => {
         const response = await axios.get(`${URL}/orders`).then((res) => {
             setOrders(res.data);
             setLoading(false);
-
-            console.log(res.data);
         });
 
         return response;

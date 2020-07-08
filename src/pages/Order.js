@@ -20,7 +20,6 @@ const Order = () => {
                     <td>{item.created_at}</td>
                     <td>{item.name}</td>
                     <td>{item.total}</td>
-                    <td>{item.shipped.toString()}</td>
                 </tr>
             </tbody>
         );
@@ -38,7 +37,6 @@ const Order = () => {
                         <th>Date Order</th>
                         <th>Name</th>
                         <th>Total</th>
-                        <th>Status</th>
                     </tr>
                 </tbody>
                 {myOrder}

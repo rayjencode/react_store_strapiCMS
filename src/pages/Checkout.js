@@ -38,8 +38,6 @@ function Checkout(props) {
             .createToken()
             .catch((error) => console.log(error));
 
-        console.log(response);
-
         const { token } = response;
 
         if (token) {

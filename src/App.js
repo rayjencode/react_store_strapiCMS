@@ -15,6 +15,7 @@ import Order from './pages/Order';
 // Component
 import Header from './components/Header';
 import Alert from './components/Alert';
+import ScrollButton from './components/ScrollButton';
 import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Router>
             <Header />
             <Alert />
+            <ScrollButton />
             <Switch>
                 <Route exact path="/">
                     <Home />

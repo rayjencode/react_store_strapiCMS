@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 const UserContext = createContext();
 
@@ -15,6 +15,17 @@ const UserProvider = ({ children }) => {
         msg: '',
         type: 'danger',
     });
+
+    const [height, setHeight] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            setHeight(window.pageYOffset);
+        });
+        return () => {
+            window.removeEventListener('scroll', () => {});
+        };
+    }, [setHeight, height]);
 
     const showAlert = ({ msg, type = 'success', time = 4000 }) => {
         setAlert({ show: true, msg, type });
@@ -46,6 +57,7 @@ const UserProvider = ({ children }) => {
                 showAlert,
                 hideAlert,
                 alert,
+                height,
             }}
         >
             {children}

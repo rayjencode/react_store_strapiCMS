@@ -1,20 +1,15 @@
 import React, { useContext } from 'react';
 import Loading from '../components/Loading';
 import { OrderContext } from '../context/order';
-// import { UserContext } from '../context/user';
+import { UserContext } from '../context/user';
 
 const Order = () => {
     const { loading, orders } = useContext(OrderContext);
-    // const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
-    // console.log(orders);
-    // console.log(user);
+    let myOrderList = [...orders].filter((item) => item.user.id === user.id);
 
-    // const userId = user.id;
-
-    // const userOrders = orders.find((item) => item.user.id === parseInt(userId));
-
-    const myOrder = orders.map((item) => {
+    const myOrders = myOrderList.map((item) => {
         return (
             <tbody key={item.id}>
                 <tr>
@@ -43,7 +38,7 @@ const Order = () => {
                             <th>Total</th>
                         </tr>
                     </tbody>
-                    {myOrder}
+                    {myOrders}
                 </table>
             </div>
         </>

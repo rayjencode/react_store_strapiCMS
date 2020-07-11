@@ -20,7 +20,7 @@ export default function Product({
             />
             <h5 className="card__title">{title || ' Default Title'}</h5>
             <p className="card__desc my-2">
-                {description === null ? '...' : description.substring(0, 50)}...
+                {/* {description === null ? '...' : description.substring(0, 50)}... */}
             </p>
             <Link to={`/products/${id}`} className="btn btn-primary">
                 Details

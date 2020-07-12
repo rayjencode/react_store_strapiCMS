@@ -18,16 +18,33 @@ const ProductProvider = ({ children }) => {
         search: '',
         category: 'all',
         shipping: false,
-        price: 'all',
+        price: 0,
     });
 
     const changePage = (index) => {
-        // console.log(index);
         setPage(index);
     };
 
     const updateFilters = (e) => {
-        console.log(e);
+        const type = e.target.type;
+        const filter = e.target.name;
+        const value = e.target.value;
+
+        let filterValue;
+
+        if (type === 'checkbox') {
+            filterValue = e.target.checked;
+        } else if (type === 'radio') {
+            value === 'all'
+                ? (filterValue = value)
+                : (filterValue = parseInt(value));
+        } else {
+            filterValue = value;
+        }
+
+        setFilters({ ...filters, [filter]: filterValue });
+
+        // console.log(type, filter, value);
     };
 
     useEffect(() => {
@@ -42,6 +59,46 @@ const ProductProvider = ({ children }) => {
         });
         return () => {};
     }, [setProducts, setLoading, setFeatured]);
+
+    useEffect(() => {
+        let newProducts = [...products].sort((a, b) => a.price - b.price);
+
+        const { search, category, shipping, price } = filters;
+
+        if (category !== 'all') {
+            newProducts = newProducts.filter(
+                (item) => item.category === category
+            );
+        }
+
+        if (shipping !== false) {
+            newProducts = newProducts.filter(
+                (item) => item.free_shipping === shipping
+            );
+        }
+
+        if (search !== '') {
+            newProducts = newProducts.filter((item) => {
+                let title = item.title.toLowerCase().trim();
+                return title.startsWith(search) ? item : null;
+            });
+        }
+
+        if (price !== 'all') {
+            newProducts = newProducts.filter((item) => {
+                if (price === 0) {
+                    return item.price < 300;
+                } else if (price === 300) {
+                    return item.price > 350 && item.price < 650;
+                } else {
+                    return item.price > 650;
+                }
+            });
+        }
+
+        setPage(0);
+        setSorted(paginate(newProducts));
+    }, [filters, products]);
 
     return (
         <ProductContext.Provider
